@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The OhMy Tree",
 	id: "NardsTree",
 	author: "Nards187",
-	pointsName: "points",
+	pointsName: "DNA",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "0.01",
+	name: "The Beginning",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -42,7 +42,14 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
+		
+
 	let gain = new Decimal(1)
+
+	if (hasUpgrade('p', 11)) gain = gain.times(2)
+
+	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
+	
 	return gain
 }
 
